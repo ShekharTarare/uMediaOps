@@ -1,0 +1,35 @@
+name: Build & Verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore uMediaOps.sln
+
+      - name: Build
+        run: dotnet build uMediaOps.sln --configuration Release --no-restore
+
+      - name: Pack NuGet
+        run: dotnet pack src/uMediaOps/uMediaOps.csproj --configuration Release --no-build --output ./nupkg
+
+      - name: Upload NuGet artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget-package
+          path: ./nupkg/*.nupkg
+          retention-days: 30
