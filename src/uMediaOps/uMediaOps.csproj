@@ -12,7 +12,7 @@
     <Title>uMediaOps - Media Management Suite for Umbraco</Title>
     <Description>Comprehensive media management suite for Umbraco 17+ including duplicate detection using SHA256 hashing, unused media finder, backup management, and audit logging.</Description>
     <PackageTags>umbraco;umbraco-marketplace;media;duplicates;unused-media;backup;audit</PackageTags>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>Shekhar Tarare</Authors>
     <Company>Shekhar Tarare</Company>
     <Copyright>Copyright © 2026 Shekhar Tarare</Copyright>
