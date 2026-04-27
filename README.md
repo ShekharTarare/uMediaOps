@@ -1,18 +1,13 @@
-<p align="center">
-  <img src="src/uMediaOps/icon.png" alt="uMediaOps Logo" width="120" />
-</p>
+# uMediaOps - Media Management Suite for Umbraco
 
-<h1 align="center">uMediaOps</h1>
-<p align="center">Media Management Suite for Umbraco</p>
+[![NuGet](https://img.shields.io/nuget/v/uMediaOps?color=blue)](https://www.nuget.org/packages/uMediaOps)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/uMediaOps)](https://www.nuget.org/packages/uMediaOps)
+[![Umbraco Marketplace](https://img.shields.io/badge/Umbraco-Marketplace-3544B1?logo=umbraco)](https://marketplace.umbraco.com/package/umediaops)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Umbraco 17+](https://img.shields.io/badge/Umbraco-17%2B-orange)](https://umbraco.com)
+[![.NET 10](https://img.shields.io/badge/.NET-10.0-purple)](https://dotnet.microsoft.com)
 
-<p align="center">
-  <a href="https://www.nuget.org/packages/uMediaOps"><img src="https://img.shields.io/nuget/v/uMediaOps?color=blue" alt="NuGet" /></a>
-  <a href="https://www.nuget.org/packages/uMediaOps"><img src="https://img.shields.io/nuget/dt/uMediaOps" alt="NuGet Downloads" /></a>
-  <a href="https://marketplace.umbraco.com/package/umediaops"><img src="https://img.shields.io/badge/Umbraco-Marketplace-3544B1?logo=umbraco" alt="Umbraco Marketplace" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT" /></a>
-  <a href="https://umbraco.com"><img src="https://img.shields.io/badge/Umbraco-17%2B-orange" alt="Umbraco 17+" /></a>
-  <a href="https://dotnet.microsoft.com"><img src="https://img.shields.io/badge/.NET-10.0-purple" alt=".NET 10" /></a>
-</p>
+![uMediaOps Logo](https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/src/uMediaOps/icon.png)
 
 Comprehensive media management package for Umbraco 17+ that helps you find duplicates, clean up unused media, create backups, and track all operations with audit logging.
 
@@ -28,14 +23,14 @@ Comprehensive media management package for Umbraco 17+ that helps you find dupli
 
 ## Screenshots
 
-![Overview Dashboard](screenshots/overview.png)
-![Duplicate Detection](screenshots/duplicates.png)
-![Duplicate Results](screenshots/duplicates-results.png)
-![Duplicate Group Detail](screenshots/individual-duplicates-page.png)
-![Unused Media Finder](screenshots/unused-media-finder.png)
-![Unused Media Results](screenshots/unused-media-finder-results.png)
-![Backup Management](screenshots/backup-management.png)
-![Audit Log](screenshots/audit-log.png)
+![Overview Dashboard](https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/overview.png)
+![Duplicate Detection](https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/duplicates.png)
+![Duplicate Results](https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/duplicates-results.png)
+![Duplicate Group Detail](https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/individual-duplicates-page.png)
+![Unused Media Finder](https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/unused-media-finder.png)
+![Unused Media Results](https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/unused-media-finder-results.png)
+![Backup Management](https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/backup-management.png)
+![Audit Log](https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/audit-log.png)
 
 ## Installation
 
