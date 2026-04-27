@@ -1,11 +1,18 @@
-# uMediaOps - Media Management Suite for Umbraco
+<p align="center">
+  <img src="src/uMediaOps/icon.png" alt="uMediaOps Logo" width="120" />
+</p>
 
-[![NuGet](https://img.shields.io/nuget/v/uMediaOps?color=blue)](https://www.nuget.org/packages/uMediaOps)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/uMediaOps)](https://www.nuget.org/packages/uMediaOps)
-[![Umbraco Marketplace](https://img.shields.io/badge/Umbraco-Marketplace-3544B1?logo=umbraco)](https://marketplace.umbraco.com/package/umediaops)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Umbraco 17+](https://img.shields.io/badge/Umbraco-17%2B-orange)](https://umbraco.com)
-[![.NET 10](https://img.shields.io/badge/.NET-10.0-purple)](https://dotnet.microsoft.com)
+<h1 align="center">uMediaOps</h1>
+<p align="center">Media Management Suite for Umbraco</p>
+
+<p align="center">
+  <a href="https://www.nuget.org/packages/uMediaOps"><img src="https://img.shields.io/nuget/v/uMediaOps?color=blue" alt="NuGet" /></a>
+  <a href="https://www.nuget.org/packages/uMediaOps"><img src="https://img.shields.io/nuget/dt/uMediaOps" alt="NuGet Downloads" /></a>
+  <a href="https://marketplace.umbraco.com/package/umediaops"><img src="https://img.shields.io/badge/Umbraco-Marketplace-3544B1?logo=umbraco" alt="Umbraco Marketplace" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT" /></a>
+  <a href="https://umbraco.com"><img src="https://img.shields.io/badge/Umbraco-17%2B-orange" alt="Umbraco 17+" /></a>
+  <a href="https://dotnet.microsoft.com"><img src="https://img.shields.io/badge/.NET-10.0-purple" alt=".NET 10" /></a>
+</p>
 
 Comprehensive media management package for Umbraco 17+ that helps you find duplicates, clean up unused media, create backups, and track all operations with audit logging.
 
