@@ -1,0 +1,32 @@
+{
+  "Title": "uMediaOps - Media Management Suite",
+  "Description": "Keep your Umbraco media library clean and optimized with duplicate detection, unused media finder, backup management and audit logging.",
+  "Category": "PIM & DAM",
+  "PackageType": "Package",
+  "AuthorDetails": {
+    "Name": "Shekhar Tarare",
+    "Url": "https://shekhartarare.com",
+    "ImageUrl": ""
+  },
+  "Screenshots": [
+    "https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/overview.png",
+    "https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/duplicates.png",
+    "https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/duplicates-results.png",
+    "https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/individual-duplicates-page.png",
+    "https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/unused-media-finder.png",
+    "https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/unused-media-finder-results.png",
+    "https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/backup-management.png",
+    "https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/screenshots/audit-log.png"
+  ],
+  "VideoUrl": "",
+  "Tags": [
+    "media",
+    "duplicates",
+    "unused-media",
+    "backup",
+    "audit-log",
+    "analytics",
+    "media-management"
+  ],
+  "VersionSpecificPackageIds": []
+}

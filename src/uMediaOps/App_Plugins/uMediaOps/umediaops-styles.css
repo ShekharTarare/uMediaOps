@@ -1,0 +1,546 @@
+/**
+ * uMediaOps Suite Branding Styles
+ * Defines color palette, spacing, and common styles for uMediaOps suite
+ */
+
+:root {
+  /* uMediaOps Brand Colors */
+  --umediaops-primary-color: #00b5a3;
+  --umediaops-secondary-color: #1e293b;
+  --umediaops-gradient: linear-gradient(135deg, #00b5a3 0%, #1e293b 100%);
+
+  /* uMediaOps Semantic Colors */
+  --umediaops-success: #10b981;
+  --umediaops-warning: #f59e0b;
+  --umediaops-danger: #ef4444;
+  --umediaops-info: #3b82f6;
+
+  /* uMediaOps Spacing (extends Umbraco spacing) */
+  --umediaops-section-spacing: var(--uui-size-space-6, 24px);
+  --umediaops-button-spacing: var(--uui-size-space-3, 12px);
+  --umediaops-panel-padding: var(--uui-size-space-6, 24px);
+
+  /* uMediaOps Component Sizes */
+  --umediaops-header-height: 60px;
+  --umediaops-toolbar-height: 48px;
+  --umediaops-card-min-height: 200px;
+}
+
+/* uMediaOps Common Styles */
+.umediaops-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--uui-color-surface);
+}
+
+.umediaops-content {
+  flex: 1;
+  padding: var(--umediaops-section-spacing);
+  overflow-y: auto;
+}
+
+.umediaops-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--umediaops-button-spacing);
+  padding: var(--uui-size-space-4);
+  background: var(--uui-color-surface);
+  border-bottom: 1px solid var(--uui-color-border);
+  min-height: var(--umediaops-toolbar-height);
+}
+
+.umediaops-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: var(--umediaops-button-spacing);
+}
+
+.umediaops-toolbar-spacer {
+  flex: 1;
+}
+
+/* uMediaOps Cards */
+.umediaops-card {
+  background: var(--uui-color-surface);
+  border: 1px solid var(--uui-color-border);
+  border-radius: var(--uui-border-radius);
+  padding: var(--uui-size-space-5);
+  transition: all 200ms ease;
+}
+
+.umediaops-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  border-color: var(--umediaops-primary-color);
+}
+
+.umediaops-card:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.umediaops-card.interactive {
+  cursor: pointer;
+}
+
+.umediaops-card.interactive:hover {
+  background: var(--uui-color-surface-emphasis);
+}
+
+.umediaops-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--uui-size-space-3);
+  margin-bottom: var(--uui-size-space-4);
+}
+
+.umediaops-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.umediaops-card-description {
+  color: var(--uui-color-text-alt);
+  margin: var(--uui-size-space-2) 0;
+}
+
+.umediaops-card-metric {
+  display: flex;
+  align-items: center;
+  gap: var(--uui-size-space-2);
+  padding: var(--uui-size-space-2) var(--uui-size-space-3);
+  background: var(--uui-color-surface-alt);
+  border-radius: var(--uui-border-radius);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* uMediaOps Stats */
+.umediaops-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--uui-size-space-4);
+  margin-bottom: var(--umediaops-section-spacing);
+}
+
+.umediaops-stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--uui-size-space-5);
+  background: var(--uui-color-surface);
+  border: 1px solid var(--uui-color-border);
+  border-radius: var(--uui-border-radius);
+  text-align: center;
+}
+
+.umediaops-stat-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--umediaops-primary-color);
+  margin: var(--uui-size-space-2) 0;
+}
+
+.umediaops-stat-label {
+  font-size: 14px;
+  color: var(--uui-color-text-alt);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.umediaops-stat-card.highlight {
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.1) 0%,
+    rgba(118, 75, 162, 0.1) 100%
+  );
+  border-color: var(--umediaops-primary-color);
+}
+
+/* uMediaOps Panels */
+.umediaops-panel {
+  background: var(--uui-color-surface-alt);
+  border: 1px solid var(--uui-color-border);
+  border-radius: var(--uui-border-radius);
+  overflow: hidden;
+  margin-bottom: var(--uui-size-space-4);
+  transition: border-color 200ms ease;
+}
+
+.umediaops-panel:hover {
+  border-color: var(--umediaops-primary-color);
+}
+
+.umediaops-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--uui-size-space-4);
+  background: var(--uui-color-surface);
+  border-bottom: 1px solid var(--uui-color-border);
+  cursor: pointer;
+  user-select: none;
+  transition: background 200ms ease;
+}
+
+.umediaops-panel-header:hover {
+  background: var(--uui-color-surface-emphasis);
+}
+
+.umediaops-panel-header:active {
+  background: var(--uui-color-surface-alt);
+}
+
+.umediaops-panel-title {
+  display: flex;
+  align-items: center;
+  gap: var(--uui-size-space-2);
+  font-weight: 600;
+  margin: 0;
+}
+
+.umediaops-panel-content {
+  padding: var(--umediaops-panel-padding);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 300ms ease;
+}
+
+.umediaops-panel.open .umediaops-panel-content {
+  max-height: 1000px;
+}
+
+.umediaops-panel-chevron {
+  transition: transform 300ms ease;
+}
+
+.umediaops-panel.open .umediaops-panel-chevron {
+  transform: rotate(180deg);
+}
+
+/* uMediaOps Badges */
+.umediaops-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--uui-size-space-2);
+  background: var(--umediaops-primary-color);
+  color: white;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.umediaops-badge.warning {
+  background: var(--umediaops-warning);
+}
+
+.umediaops-badge.danger {
+  background: var(--umediaops-danger);
+}
+
+.umediaops-badge.success {
+  background: var(--umediaops-success);
+}
+
+/* uMediaOps Grid Layouts */
+.umediaops-grid {
+  display: grid;
+  gap: var(--uui-size-space-4);
+}
+
+.umediaops-grid.cols-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.umediaops-grid.cols-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.umediaops-grid.cols-4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .umediaops-content {
+    padding: var(--uui-size-space-4);
+  }
+
+  .umediaops-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .umediaops-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .umediaops-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Utility Classes */
+.umediaops-hidden {
+  display: none !important;
+}
+
+.umediaops-text-center {
+  text-align: center;
+}
+
+.umediaops-text-gradient {
+  background: var(--umediaops-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.umediaops-divider {
+  height: 1px;
+  background: var(--uui-color-border);
+  margin: var(--uui-size-space-4) 0;
+}
+
+/* Interactive Element Hover and Active States */
+
+/* Buttons */
+uui-button {
+  transition: all 200ms ease;
+}
+
+uui-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+uui-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+uui-button[look='primary'] {
+  background: var(--umediaops-gradient);
+}
+
+uui-button[look='primary']:hover {
+  filter: brightness(1.1);
+}
+
+uui-button[look='primary']:active {
+  filter: brightness(0.95);
+}
+
+/* Links */
+a.umediaops-link {
+  color: var(--umediaops-primary-color);
+  text-decoration: none;
+  transition: all 200ms ease;
+  position: relative;
+}
+
+a.umediaops-link:hover {
+  color: var(--umediaops-secondary-color);
+  text-decoration: underline;
+}
+
+a.umediaops-link:active {
+  opacity: 0.8;
+}
+
+/* Inputs and Form Elements */
+uui-input,
+uui-select,
+uui-textarea {
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+}
+
+uui-input:hover,
+uui-select:hover,
+uui-textarea:hover {
+  border-color: var(--umediaops-primary-color);
+}
+
+uui-input:focus,
+uui-select:focus,
+uui-textarea:focus {
+  border-color: var(--umediaops-primary-color);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Checkboxes */
+uui-checkbox {
+  transition: all 200ms ease;
+}
+
+uui-checkbox:hover {
+  transform: scale(1.05);
+}
+
+uui-checkbox:active {
+  transform: scale(0.98);
+}
+
+/* Icons */
+uui-icon.interactive {
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+uui-icon.interactive:hover {
+  color: var(--umediaops-primary-color);
+  transform: scale(1.1);
+}
+
+uui-icon.interactive:active {
+  transform: scale(1);
+}
+
+/* Table Rows */
+.umediaops-table-row {
+  transition: background 200ms ease;
+}
+
+.umediaops-table-row:hover {
+  background: var(--uui-color-surface-emphasis);
+}
+
+.umediaops-table-row:active {
+  background: var(--uui-color-surface-alt);
+}
+
+.umediaops-table-row.selectable {
+  cursor: pointer;
+}
+
+/* List Items */
+.umediaops-list-item {
+  transition: all 200ms ease;
+  cursor: pointer;
+}
+
+.umediaops-list-item:hover {
+  background: var(--uui-color-surface-emphasis);
+  transform: translateX(4px);
+}
+
+.umediaops-list-item:active {
+  background: var(--uui-color-surface-alt);
+  transform: translateX(2px);
+}
+
+/* Tabs */
+.umediaops-tab {
+  transition: all 200ms ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.umediaops-tab:hover {
+  color: var(--umediaops-primary-color);
+}
+
+.umediaops-tab:active {
+  opacity: 0.8;
+}
+
+.umediaops-tab.active {
+  color: var(--umediaops-primary-color);
+  font-weight: 600;
+}
+
+.umediaops-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--umediaops-gradient);
+}
+
+/* Dropdown Items */
+.umediaops-dropdown-item {
+  transition: all 200ms ease;
+  cursor: pointer;
+  padding: var(--uui-size-space-2) var(--uui-size-space-3);
+}
+
+.umediaops-dropdown-item:hover {
+  background: var(--uui-color-surface-emphasis);
+  color: var(--umediaops-primary-color);
+}
+
+.umediaops-dropdown-item:active {
+  background: var(--uui-color-surface-alt);
+}
+
+/* Focus Indicators */
+*:focus-visible {
+  outline: 2px solid var(--umediaops-primary-color);
+  outline-offset: 2px;
+}
+
+/* Loading States */
+.umediaops-loading {
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
+}
+
+.umediaops-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Disabled States */
+.umediaops-disabled,
+[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Smooth Transitions for All Interactive Elements */
+button,
+a,
+input,
+select,
+textarea,
+.umediaops-card,
+.umediaops-panel,
+.umediaops-list-item,
+.umediaops-table-row {
+  transition: all 200ms ease;
+}
+
+/* Override Umbraco section view tabs to align left like Engage */
+umb-section-main-views {
+  display: block;
+}
+
+umb-section-main-views::part(tabs) {
+  justify-content: flex-start !important;
+  padding-left: var(--uui-size-space-4);
+}
+
+/* Alternative: Target the tabs container directly */
+#main umb-section-main-views,
+[id='main'] umb-section-main-views {
+  --umb-section-main-views-justify: flex-start;
+}

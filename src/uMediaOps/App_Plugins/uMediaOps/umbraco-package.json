@@ -1,0 +1,118 @@
+{
+  "$schema": "umbraco-package-schema.json",
+  "name": "uMediaOps",
+  "version": "1.0.0",
+  "extensions": [
+    {
+      "type": "stylesheet",
+      "alias": "uMediaOps.Styles",
+      "name": "uMediaOps Styles",
+      "js": "/App_Plugins/uMediaOps/umediaops-styles.css"
+    },
+    {
+      "type": "section",
+      "alias": "uMediaOps.Section",
+      "name": "uMediaOps",
+      "meta": {
+        "label": "uMediaOps",
+        "pathname": "uMediaOps",
+        "icon": "icon-picture"
+      }
+    },
+    {
+      "type": "sectionView",
+      "alias": "uMediaOps.overview.dashboard",
+      "name": "uMediaOps Overview",
+      "element": "/App_Plugins/uMediaOps/umediaops-overview-dashboard.js",
+      "elementName": "umediaops-overview-dashboard",
+      "weight": 1000,
+      "meta": {
+        "label": "Overview",
+        "icon": "icon-home",
+        "pathname": "overview"
+      },
+      "conditions": [
+        {
+          "alias": "Umb.Condition.SectionAlias",
+          "match": "uMediaOps.Section"
+        }
+      ]
+    },
+    {
+      "type": "sectionView",
+      "alias": "uMediaOps.duplicates",
+      "name": "Duplicates",
+      "element": "/App_Plugins/uMediaOps/duplicate-groups-combined.js",
+      "elementName": "umediaops-duplicate-groups-combined",
+      "weight": 900,
+      "meta": {
+        "label": "Duplicates",
+        "icon": "icon-files",
+        "pathname": "duplicates"
+      },
+      "conditions": [
+        {
+          "alias": "Umb.Condition.SectionAlias",
+          "match": "uMediaOps.Section"
+        }
+      ]
+    },
+    {
+      "type": "sectionView",
+      "alias": "uMediaOps.unusedMediaFinder",
+      "name": "Unused Media Finder",
+      "element": "/App_Plugins/uMediaOps/unused-media-finder-dashboard.js",
+      "elementName": "umediaops-unused-media-finder-dashboard",
+      "weight": 700,
+      "meta": {
+        "label": "Unused Media",
+        "icon": "icon-trash",
+        "pathname": "unused-media"
+      },
+      "conditions": [
+        {
+          "alias": "Umb.Condition.SectionAlias",
+          "match": "uMediaOps.Section"
+        }
+      ]
+    },
+    {
+      "type": "sectionView",
+      "alias": "uMediaOps.backup.dashboard",
+      "name": "Backup Management",
+      "element": "/App_Plugins/uMediaOps/backup-dashboard.js",
+      "elementName": "umediaops-backup-dashboard",
+      "weight": 400,
+      "meta": {
+        "label": "Backup",
+        "icon": "icon-save",
+        "pathname": "backup"
+      },
+      "conditions": [
+        {
+          "alias": "Umb.Condition.SectionAlias",
+          "match": "uMediaOps.Section"
+        }
+      ]
+    },
+    {
+      "type": "sectionView",
+      "alias": "uMediaOps.audit.log.dashboard",
+      "name": "Audit Log",
+      "element": "/App_Plugins/uMediaOps/audit-log-dashboard.js",
+      "elementName": "umediaops-audit-log-dashboard",
+      "weight": 200,
+      "meta": {
+        "label": "Audit Log",
+        "icon": "icon-list",
+        "pathname": "audit-log"
+      },
+      "conditions": [
+        {
+          "alias": "Umb.Condition.SectionAlias",
+          "match": "uMediaOps.Section"
+        }
+      ]
+    }
+  ]
+}

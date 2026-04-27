@@ -1,0 +1,84 @@
+# Build outputs
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+
+# Project build outputs
+src/uMediaOps/bin/
+src/uMediaOps/obj/
+test/uMediaOps.TestSite/bin/
+test/uMediaOps.TestSite/obj/
+
+# TestSite runtime data
+test/uMediaOps.TestSite/App_Data/
+test/uMediaOps.TestSite/App_Plugins/
+test/uMediaOps.TestSite/umbraco/
+test/uMediaOps.TestSite/wwwroot/media/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.nupkg
+*.snupkg
+
+# NuGet
+**/packages/*
+!**/packages/build/
+nupkg/
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# Umbraco auto-generated schemas (keep src/uMediaOps/appsettings-schema.json which is hand-written)
+appsettings-schema.Umbraco.Cms.json
+umbraco-package-schema.json
+test/**/appsettings-schema.json
+
+# Umbraco runtime
+**/umbraco/Data/
+**/umbraco/Logs/
+**/umbraco_client/
+
+# Logs
+*.log
+
+# SQLite databases
+*.sqlite.db
+*.sqlite.db-shm
+*.sqlite.db-wal
+
+# Kiro IDE specs
+.kiro/
