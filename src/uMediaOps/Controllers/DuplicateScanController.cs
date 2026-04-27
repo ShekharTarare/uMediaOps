@@ -89,6 +89,9 @@ public class DuplicateScanController : ManagementApiControllerBase
                 var scanResult = await duplicateDetectionService.ScanMediaLibraryAsync(progress);
                 _cacheService.Set(CacheKeys.DuplicateScanResult, scanResult);
                 
+                // Clear stale duplicate groups cache so the next request fetches fresh data
+                _cacheService.RemoveByPattern("umediaops:duplicates:groups");
+                
                 // Record analytics
                 await analyticsService.RecordScanResultAsync(scanResult);
                 
