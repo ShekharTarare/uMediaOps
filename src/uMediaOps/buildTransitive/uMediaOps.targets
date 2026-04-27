@@ -1,0 +1,19 @@
+<Project>
+  <Target Name="CopyuMediaOpsAppPlugins" AfterTargets="Build">
+    <ItemGroup>
+      <uMediaOpsFiles Include="$(MSBuildThisFileDirectory)..\App_Plugins\uMediaOps\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(uMediaOpsFiles)"
+          DestinationFolder="$(MSBuildProjectDirectory)\App_Plugins\uMediaOps\%(RecursiveDir)"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="CopyuMediaOpsAppPluginsPublish" AfterTargets="Publish">
+    <ItemGroup>
+      <uMediaOpsPublishFiles Include="$(MSBuildThisFileDirectory)..\App_Plugins\uMediaOps\**\*.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(uMediaOpsPublishFiles)"
+          DestinationFolder="$(PublishDir)\App_Plugins\uMediaOps\%(RecursiveDir)"
+          SkipUnchangedFiles="true" />
+  </Target>
+</Project>

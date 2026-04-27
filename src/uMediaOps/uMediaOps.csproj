@@ -35,13 +35,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Include all App_Plugins files -->
+    <!-- Include App_Plugins files in NuGet package for deployment -->
     <Content Include="App_Plugins\**\*.*">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <Link>App_Plugins\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <Pack>true</Pack>
+      <PackagePath>App_Plugins\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
     </Content>
+    
+    <!-- Include .targets file for auto-copying App_Plugins to consuming projects -->
+    <None Include="buildTransitive\uMediaOps.targets" Pack="true" PackagePath="buildTransitive\" />
     
     <!-- Include README and icon in package -->
     <None Include="..\..\README.md" Pack="true" PackagePath="\" />
