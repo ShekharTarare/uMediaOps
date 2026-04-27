@@ -44,6 +44,7 @@ export class UnusedMediaFinderDashboard extends UmbElementMixin(LitElement) {
     this.authHelper = new AuthenticationHelper(this)
     this._allItemSizes = new Map()
     this.selectedProfile = 'quick' // Default to Quick scan
+    this.originalUnusedCount = 0 // Track unfiltered count to keep controls visible during search
 
     // Profile configurations
     this.profiles = [
@@ -294,6 +295,12 @@ export class UnusedMediaFinderDashboard extends UmbElementMixin(LitElement) {
         }
         this.totalItems = data.totalItems || 0
         this.totalPages = data.totalPages || 1
+
+        // Track original unused count (without filters) to keep controls visible during search
+        const hasFilters = this.filters.search || this.filters.fileType
+        if (!hasFilters) {
+          this.originalUnusedCount = data.unusedCount || 0
+        }
       } else {
         // Invalid scan results data received
         this.results = null
@@ -1080,7 +1087,7 @@ export class UnusedMediaFinderDashboard extends UmbElementMixin(LitElement) {
         </div>
 
         ${this.renderFileTypeBreakdown()}
-        ${this.results.unusedCount > 0
+        ${this.originalUnusedCount > 0
           ? html`
               <div class="controls">
                 <div class="filters">
@@ -1090,6 +1097,7 @@ export class UnusedMediaFinderDashboard extends UmbElementMixin(LitElement) {
                       id="searchFilter"
                       type="text"
                       placeholder="Search by filename..."
+                      autocomplete="off"
                       .value=${this.filters.search || ''}
                       @input=${(e) => {
                         this.filters.search = e.target.value
@@ -1109,6 +1117,7 @@ export class UnusedMediaFinderDashboard extends UmbElementMixin(LitElement) {
                       id="fileTypeFilter"
                       type="text"
                       placeholder="e.g., Image, PDF, MP4, DOCX"
+                      autocomplete="off"
                       @input=${(e) => {
                         this.filters.fileType = e.target.value
                         // Debounce filter - wait for user to stop typing
@@ -1226,6 +1235,21 @@ export class UnusedMediaFinderDashboard extends UmbElementMixin(LitElement) {
               </div>
 
               <div class="items-list">
+                ${paginatedItems.length === 0
+                  ? html`
+                      <uui-box>
+                        <div
+                          style="text-align: center; padding: 24px; color: var(--uui-color-text-alt);"
+                        >
+                          <uui-icon
+                            name="icon-search"
+                            style="font-size: 2rem;"
+                          ></uui-icon>
+                          <p>No items match your search or filter criteria.</p>
+                        </div>
+                      </uui-box>
+                    `
+                  : ''}
                 ${paginatedItems.map(
                   (item) => html`
                     <uui-box class="item-card">

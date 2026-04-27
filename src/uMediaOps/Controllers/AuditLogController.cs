@@ -39,7 +39,7 @@ public class AuditLogController : ManagementApiControllerBase
         {
             // Get current user for logging
             var currentUser = _backOfficeSecurityAccessor.BackOfficeSecurity?.CurrentUser;
-            _logger.LogInformation("GetRecent called by user: {UserName} (ID: {UserId})", 
+            _logger.LogDebug("GetRecent called by user: {UserName} (ID: {UserId})", 
                 currentUser?.Name ?? currentUser?.Username ?? currentUser?.Email ?? "Anonymous", 
                 currentUser?.Id ?? -1);
 
