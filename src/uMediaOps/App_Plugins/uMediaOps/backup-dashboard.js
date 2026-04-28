@@ -294,22 +294,23 @@ export class BackupDashboard extends UmbElementMixin(LitElement) {
   formatTimeAgo(dateString) {
     if (!dateString) return 'Never'
 
-    // Fix: Backend returns dates with 7 decimal places for milliseconds (e.g., .9735678)
-    // JavaScript Date parser expects 3 decimal places (e.g., .973)
-    // Truncate to 3 decimal places to ensure correct parsing
-    let cleanDateString = dateString
-    if (dateString.includes('.')) {
-      const parts = dateString.split('.')
-      if (parts.length === 2) {
-        const milliseconds = parts[1].substring(0, 3) // Take only first 3 digits
-        cleanDateString = `${parts[0]}.${milliseconds}Z`
-      }
+    // Ensure UTC dates from the backend are parsed correctly
+    let utcDate = dateString
+    if (
+      !utcDate.endsWith('Z') &&
+      !utcDate.includes('+') &&
+      !utcDate.includes('-', 10)
+    ) {
+      utcDate += 'Z'
     }
 
-    const date = new Date(cleanDateString)
+    const date = new Date(utcDate)
+    if (isNaN(date.getTime())) return 'Unknown'
+
     const now = new Date()
     const seconds = Math.floor((now - date) / 1000)
 
+    if (seconds < 0) return 'just now'
     if (seconds < 60) return 'just now'
     const minutes = Math.floor(seconds / 60)
     if (minutes < 60) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`

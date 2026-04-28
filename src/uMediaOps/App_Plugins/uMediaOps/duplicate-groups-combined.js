@@ -197,9 +197,23 @@ export class DuplicateGroupsCombined extends UmbElementMixin(LitElement) {
 
   formatTimeAgo(dateString) {
     if (!dateString) return 'Never'
-    const date = new Date(dateString)
+
+    let utcDate = dateString
+    if (
+      !utcDate.endsWith('Z') &&
+      !utcDate.includes('+') &&
+      !utcDate.includes('-', 10)
+    ) {
+      utcDate += 'Z'
+    }
+
+    const date = new Date(utcDate)
+    if (isNaN(date.getTime())) return 'Unknown'
+
     const now = new Date()
     const seconds = Math.floor((now - date) / 1000)
+
+    if (seconds < 0) return 'just now'
     if (seconds < 60) return 'just now'
     const minutes = Math.floor(seconds / 60)
     if (minutes < 60) return `${minutes}m ago`

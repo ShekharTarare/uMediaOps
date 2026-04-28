@@ -3,7 +3,7 @@
 [![NuGet](https://img.shields.io/nuget/v/uMediaOps?color=blue)](https://www.nuget.org/packages/uMediaOps)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/uMediaOps)](https://www.nuget.org/packages/uMediaOps)
 [![Umbraco Marketplace](https://img.shields.io/badge/Umbraco-Marketplace-3544B1?logo=umbraco)](https://marketplace.umbraco.com/package/umediaops)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/ShekharTarare/uMediaOps/blob/main/LICENSE)
 [![Umbraco 17+](https://img.shields.io/badge/Umbraco-17%2B-orange)](https://umbraco.com)
 [![.NET 10](https://img.shields.io/badge/.NET-10.0-purple)](https://dotnet.microsoft.com)
 
@@ -112,8 +112,8 @@ All endpoints require backoffice authentication and are available under:
 
 ## Documentation
 
-- [Contributing](CONTRIBUTING.md)
+- [Contributing](https://github.com/ShekharTarare/uMediaOps/blob/main/CONTRIBUTING.md)
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) for details.
+MIT License — see [LICENSE](https://github.com/ShekharTarare/uMediaOps/blob/main/LICENSE) for details.

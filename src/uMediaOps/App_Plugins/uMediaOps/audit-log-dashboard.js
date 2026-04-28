@@ -145,7 +145,16 @@ export class AuditLogDashboard extends UmbElementMixin(LitElement) {
   }
 
   formatDate(dateString) {
-    return new Date(dateString).toLocaleString()
+    if (!dateString) return ''
+    let utcDate = dateString
+    if (
+      !utcDate.endsWith('Z') &&
+      !utcDate.includes('+') &&
+      !utcDate.includes('-', 10)
+    ) {
+      utcDate += 'Z'
+    }
+    return new Date(utcDate).toLocaleString()
   }
 
   formatDetails(details) {

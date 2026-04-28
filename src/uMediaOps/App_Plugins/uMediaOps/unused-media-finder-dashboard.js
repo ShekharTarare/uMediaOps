@@ -561,16 +561,37 @@ export class UnusedMediaFinderDashboard extends UmbElementMixin(LitElement) {
   }
 
   formatDate(dateString) {
-    return new Date(dateString).toLocaleString()
+    if (!dateString) return ''
+    let utcDate = dateString
+    if (
+      !utcDate.endsWith('Z') &&
+      !utcDate.includes('+') &&
+      !utcDate.includes('-', 10)
+    ) {
+      utcDate += 'Z'
+    }
+    return new Date(utcDate).toLocaleString()
   }
 
   formatTimeAgo(dateString) {
     if (!dateString) return 'Never'
 
-    const date = new Date(dateString)
+    let utcDate = dateString
+    if (
+      !utcDate.endsWith('Z') &&
+      !utcDate.includes('+') &&
+      !utcDate.includes('-', 10)
+    ) {
+      utcDate += 'Z'
+    }
+
+    const date = new Date(utcDate)
+    if (isNaN(date.getTime())) return 'Unknown'
+
     const now = new Date()
     const seconds = Math.floor((now - date) / 1000)
 
+    if (seconds < 0) return 'Just now'
     if (seconds < 60) return 'Just now'
     if (seconds < 3600) return `${Math.floor(seconds / 60)} minutes ago`
     if (seconds < 86400) return `${Math.floor(seconds / 3600)} hours ago`
