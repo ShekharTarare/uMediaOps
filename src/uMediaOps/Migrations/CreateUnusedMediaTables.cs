@@ -17,7 +17,7 @@ public class CreateUnusedMediaTables : AsyncMigrationBase
         if (!TableExists("uMediaOps_UnusedMediaScans"))
         {
             Create.Table("uMediaOps_UnusedMediaScans")
-                .WithColumn("Id").AsString(36).PrimaryKey().NotNullable()
+                .WithColumn("Id").AsString(36).PrimaryKey("PK_uMediaOps_UnusedMediaScans").NotNullable()
                 .WithColumn("ScannedAt").AsDateTime().NotNullable()
                 .WithColumn("ScannedBy").AsString(255).NotNullable()
                 .WithColumn("TotalScanned").AsInt32().NotNullable()
@@ -53,7 +53,7 @@ public class CreateUnusedMediaTables : AsyncMigrationBase
         if (!TableExists("uMediaOps_UnusedMediaItems"))
         {
             Create.Table("uMediaOps_UnusedMediaItems")
-                .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+                .WithColumn("Id").AsInt32().PrimaryKey("PK_uMediaOps_UnusedMediaItems").Identity()
                 .WithColumn("ScanId").AsGuid().NotNullable()
                 .WithColumn("MediaId").AsInt32().NotNullable()
                 .WithColumn("FileName").AsString(500).NotNullable()

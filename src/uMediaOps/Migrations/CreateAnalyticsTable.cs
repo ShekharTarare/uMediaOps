@@ -16,13 +16,13 @@ public class CreateAnalyticsTable : AsyncMigrationBase
             return Task.CompletedTask;
 
         Create.Table("uMediaOps_Analytics")
-            .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+            .WithColumn("Id").AsInt32().PrimaryKey("PK_uMediaOps_Analytics").Identity()
             .WithColumn("RecordedAt").AsDateTime().NotNullable()
             .WithColumn("EventType").AsString(50).NotNullable()
             .WithColumn("DuplicateCount").AsInt32().NotNullable()
             .WithColumn("StorageWasted").AsInt64().NotNullable()
             .WithColumn("StorageFreed").AsInt64().NotNullable()
-            .WithColumn("Metadata").AsString(int.MaxValue).Nullable()
+            .WithColumn("Metadata").AsCustom("NVARCHAR(MAX)").Nullable()
             .Do();
 
         Create.Index("IX_uMediaOps_Analytics_RecordedAt")

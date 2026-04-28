@@ -507,7 +507,7 @@ export class uMediaOpsOverviewDashboard extends UmbElementMixin(LitElement) {
             </h1>
             <p class="hero-tagline">Media Management Suite for Umbraco</p>
           </div>
-          <span class="hero-version">v1.0.1</span>
+          <span class="hero-version">v1.0.2</span>
         </div>
       </div>
 
@@ -690,7 +690,7 @@ export class uMediaOpsOverviewDashboard extends UmbElementMixin(LitElement) {
               <div class="info-card">
                 <h3>
                   <uui-icon name="icon-files"></uui-icon>
-                  Top File Types
+                  Top Duplicate File Types
                 </h3>
                 <ul class="info-list">
                   ${this.topFileTypes.map(

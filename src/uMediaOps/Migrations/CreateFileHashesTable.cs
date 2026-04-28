@@ -16,7 +16,7 @@ public class CreateFileHashesTable : AsyncMigrationBase
             return Task.CompletedTask;
 
         Create.Table("uMediaOps_FileHashes")
-            .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+            .WithColumn("Id").AsInt32().PrimaryKey("PK_uMediaOps_FileHashes").Identity()
             .WithColumn("MediaId").AsInt32().NotNullable()
             .WithColumn("Hash").AsString(128).NotNullable()
             .WithColumn("FileSize").AsInt64().NotNullable()

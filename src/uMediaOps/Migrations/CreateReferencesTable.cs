@@ -17,7 +17,7 @@ public class CreateReferencesTable : AsyncMigrationBase
             return Task.CompletedTask;
 
         Create.Table("uMediaOps_References")
-            .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+            .WithColumn("Id").AsInt32().PrimaryKey("PK_uMediaOps_References").Identity()
             .WithColumn("MediaId").AsInt32().NotNullable()
             .WithColumn("ContentId").AsInt32().NotNullable()
             .WithColumn("ContentName").AsString(500).NotNullable()

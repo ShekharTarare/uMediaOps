@@ -16,7 +16,7 @@ public class CreateBackupTable : AsyncMigrationBase
             return Task.CompletedTask;
 
         Create.Table("uMediaOps_Backups")
-            .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+            .WithColumn("Id").AsInt32().PrimaryKey("PK_uMediaOps_Backups").Identity()
             .WithColumn("BackupId").AsString(100).NotNullable()
             .WithColumn("BackupType").AsString(50).NotNullable().WithDefaultValue("Full")
             .WithColumn("StartedAt").AsDateTime().NotNullable()
@@ -31,7 +31,7 @@ public class CreateBackupTable : AsyncMigrationBase
             .WithColumn("Checksum").AsString(64).Nullable()
             .WithColumn("BaseBackupId").AsString(100).Nullable()
             .WithColumn("CreatedBy").AsString(255).NotNullable()
-            .WithColumn("ErrorMessage").AsString(int.MaxValue).Nullable()
+            .WithColumn("ErrorMessage").AsCustom("NVARCHAR(MAX)").Nullable()
             .WithColumn("ExpiresAt").AsDateTime().Nullable()
             .Do();
 
