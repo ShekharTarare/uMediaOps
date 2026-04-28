@@ -15,24 +15,7 @@ public class CreateFileHashesTable : AsyncMigrationBase
         if (TableExists("uMediaOps_FileHashes"))
             return Task.CompletedTask;
 
-        Create.Table("uMediaOps_FileHashes")
-            .WithColumn("Id").AsInt32().PrimaryKey("PK_uMediaOps_FileHashes").Identity()
-            .WithColumn("MediaId").AsInt32().NotNullable()
-            .WithColumn("Hash").AsString(128).NotNullable()
-            .WithColumn("FileSize").AsInt64().NotNullable()
-            .WithColumn("ComputedAt").AsDateTime().NotNullable()
-            .WithColumn("IsManuallySelectedOriginal").AsBoolean().NotNullable().WithDefaultValue(false)
-            .Do();
-
-        Create.Index("IX_uMediaOps_FileHashes_MediaId")
-            .OnTable("uMediaOps_FileHashes")
-            .OnColumn("MediaId").Ascending()
-            .Do();
-
-        Create.Index("IX_uMediaOps_FileHashes_Hash")
-            .OnTable("uMediaOps_FileHashes")
-            .OnColumn("Hash").Ascending()
-            .Do();
+        Create.Table<Models.FileHash>().Do();
 
         Logger.LogInformation("Created uMediaOps_FileHashes table");
         return Task.CompletedTask;

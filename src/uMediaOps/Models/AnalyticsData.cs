@@ -1,4 +1,5 @@
 using NPoco;
+using Umbraco.Cms.Infrastructure.Persistence.DatabaseAnnotations;
 
 namespace uMediaOps.Models;
 
@@ -9,12 +10,16 @@ namespace uMediaOps.Models;
 [PrimaryKey("Id", AutoIncrement = true)]
 public class AnalyticsData
 {
+    [PrimaryKeyColumn(AutoIncrement = true)]
     public int Id { get; set; }
     public DateTime RecordedAt { get; set; }
+    [Length(50)]
     public string EventType { get; set; } = string.Empty; // "Scan", "Deletion"
     public int DuplicateCount { get; set; }
     public long StorageWasted { get; set; }
     public long StorageFreed { get; set; }
+    [SpecialDbType(SpecialDbTypes.NVARCHARMAX)]
+    [NullSetting(NullSetting = NullSettings.Null)]
     public string? Metadata { get; set; } // JSON for additional data
 }
 

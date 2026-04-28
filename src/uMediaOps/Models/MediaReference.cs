@@ -60,7 +60,18 @@ public class MediaReference
 
     /// <summary>
     /// Risk level for deleting the media item based on this reference.
+    /// Stored as int in database.
     /// </summary>
     [Column("RiskLevel")]
-    public RiskLevel RiskLevel { get; set; } = RiskLevel.Safe;
+    public int RiskLevelValue { get; set; }
+
+    /// <summary>
+    /// Typed access to the risk level enum.
+    /// </summary>
+    [Ignore]
+    public RiskLevel RiskLevel
+    {
+        get => (RiskLevel)RiskLevelValue;
+        set => RiskLevelValue = (int)value;
+    }
 }

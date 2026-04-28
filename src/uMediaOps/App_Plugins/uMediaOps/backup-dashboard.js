@@ -160,6 +160,21 @@ export class BackupDashboard extends UmbElementMixin(LitElement) {
 
       if (!response.ok) {
         this.isCreating = false
+        if (response.status === 429) {
+          NotificationHelper.showWarning(
+            this,
+            'Please wait before starting another backup.',
+          )
+          return
+        }
+        if (response.status === 400) {
+          const data = await response.json().catch(() => ({}))
+          NotificationHelper.showWarning(
+            this,
+            data.message || 'A backup is already in progress.',
+          )
+          return
+        }
         throw new Error('Failed to create backup')
       }
 
@@ -630,7 +645,7 @@ export class BackupDashboard extends UmbElementMixin(LitElement) {
       align-items: center;
       gap: 6px;
       padding: 5px 12px;
-      background: linear-gradient(135deg, #00B5A3 0%, #1E293B 100%);
+      background: linear-gradient(135deg, #00b5a3 0%, #1e293b 100%);
       color: white;
       border-radius: 12px;
       font-size: 0.7rem;
@@ -748,7 +763,7 @@ export class BackupDashboard extends UmbElementMixin(LitElement) {
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #00B5A3 0%, #1E293B 100%);
+      background: linear-gradient(90deg, #00b5a3 0%, #1e293b 100%);
       transition: width 0.3s ease;
     }
 

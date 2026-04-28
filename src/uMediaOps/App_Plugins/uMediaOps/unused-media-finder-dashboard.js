@@ -126,7 +126,24 @@ export class UnusedMediaFinderDashboard extends UmbElementMixin(LitElement) {
         method: 'POST',
       })
 
-      if (!response.ok) throw new Error('Failed to start scan')
+      if (!response.ok) {
+        if (response.status === 429) {
+          NotificationHelper.showWarning(
+            this,
+            'Please wait a few seconds before starting another scan.',
+          )
+          return
+        }
+        if (response.status === 400) {
+          const data = await response.json().catch(() => ({}))
+          NotificationHelper.showWarning(
+            this,
+            data.message || 'A scan is already in progress.',
+          )
+          return
+        }
+        throw new Error('Failed to start scan')
+      }
 
       this.isScanning = true
       this.results = null
