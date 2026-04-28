@@ -1,7 +1,7 @@
 {
   "$schema": "umbraco-package-schema.json",
   "name": "uMediaOps",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "extensions": [
     {
       "type": "stylesheet",

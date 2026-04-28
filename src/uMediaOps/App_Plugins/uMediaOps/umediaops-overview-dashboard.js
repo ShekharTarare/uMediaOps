@@ -520,7 +520,7 @@ export class uMediaOpsOverviewDashboard extends UmbElementMixin(LitElement) {
             </h1>
             <p class="hero-tagline">Media Management Suite for Umbraco</p>
           </div>
-          <span class="hero-version">v1.0.3</span>
+          <span class="hero-version">v1.0.4</span>
         </div>
       </div>
 
