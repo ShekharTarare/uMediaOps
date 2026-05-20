@@ -1303,7 +1303,7 @@ export class UnusedMediaFinderDashboard extends UmbElementMixin(LitElement) {
                         <div class="item-preview">
                           ${this.isImageType(item.fileType)
                             ? html`<img
-                                src="${item.filePath}?width=60&height=60&mode=crop"
+                                src="${item.thumbnailUrl || item.filePath}"
                                 alt="${item.fileName}"
                                 class="preview-img"
                               />`

@@ -412,7 +412,7 @@ export class DuplicateGroupDetail extends UmbElementMixin(LitElement) {
                             ${this.isImage(item) && item.fileUrl
                               ? html`
                                   <img
-                                    src="${item.fileUrl}?width=80&height=80&mode=crop"
+                                    src="${item.thumbnailUrl || item.fileUrl}"
                                     alt="${item.name}"
                                     class="file-thumbnail-large"
                                     @error=${(e) => {

@@ -73,4 +73,10 @@ public class UnusedMediaItem
     [Length(1000)]
     [NullSetting(NullSetting = NullSettings.Null)]
     public string? WarningMessage { get; set; }
+
+    /// <summary>
+    /// HMAC-signed thumbnail URL for image previews (not persisted to database)
+    /// </summary>
+    [Ignore]
+    public string ThumbnailUrl { get; set; } = string.Empty;
 }
