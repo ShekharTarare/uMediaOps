@@ -706,7 +706,8 @@ export class DuplicateGroupsList extends UmbElementMixin(LitElement) {
                                 ${this.isImage(item) && item.fileUrl
                                   ? html`
                                       <img
-                                        src="${item.fileUrl}?width=60&height=60&mode=crop"
+                                        src="${item.thumbnailUrl ||
+                                        item.fileUrl}"
                                         alt="${item.name}"
                                         class="file-thumbnail"
                                         @error=${(e) => {
@@ -736,7 +737,8 @@ export class DuplicateGroupsList extends UmbElementMixin(LitElement) {
                                     ${this.isImage(item) && item.fileUrl
                                       ? html`
                                           <img
-                                            src="${item.fileUrl}?width=40&height=40&mode=crop"
+                                            src="${item.thumbnailUrl ||
+                                            item.fileUrl}"
                                             alt="${item.name}"
                                             class="file-thumbnail"
                                             @error=${(e) => {

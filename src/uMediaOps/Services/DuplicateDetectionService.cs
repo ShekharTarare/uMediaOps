@@ -1,6 +1,7 @@
 using uMediaOps.Models;
 using uMediaOps.Repositories;
 using Microsoft.Extensions.Logging;
+using Umbraco.Cms.Core.Media;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.IO;
@@ -40,6 +41,7 @@ public class DuplicateItem
     public string Name { get; set; } = string.Empty;
     public string Path { get; set; } = string.Empty;
     public string FileUrl { get; set; } = string.Empty;
+    public string ThumbnailUrl { get; set; } = string.Empty;
     public string FileType { get; set; } = string.Empty;
     public string Extension { get; set; } = string.Empty;
     public long FileSize { get; set; }
@@ -69,6 +71,7 @@ public class DuplicateDetectionService : IDuplicateDetectionService
     private readonly IMediaService _mediaService;
     private readonly MediaFileManager _mediaFileManager;
     private readonly IUserService _userService;
+    private readonly IImageUrlGenerator _imageUrlGenerator;
     private readonly ILogger<DuplicateDetectionService> _logger;
 
     public DuplicateDetectionService(
@@ -77,6 +80,7 @@ public class DuplicateDetectionService : IDuplicateDetectionService
         IMediaService mediaService,
         MediaFileManager mediaFileManager,
         IUserService userService,
+        IImageUrlGenerator imageUrlGenerator,
         ILogger<DuplicateDetectionService> logger)
     {
         _fileHashService = fileHashService;
@@ -84,6 +88,7 @@ public class DuplicateDetectionService : IDuplicateDetectionService
         _mediaService = mediaService;
         _mediaFileManager = mediaFileManager;
         _userService = userService;
+        _imageUrlGenerator = imageUrlGenerator;
         _logger = logger;
     }
 
@@ -387,6 +392,22 @@ public class DuplicateDetectionService : IDuplicateDetectionService
                         UploaderName = uploaderName
                     };
 
+                    // Generate HMAC-signed thumbnail URL
+                    if (!string.IsNullOrEmpty(fileUrl))
+                    {
+                        try
+                        {
+                            var options = new ImageUrlGenerationOptions(fileUrl)
+                            {
+                                Width = 80,
+                                Height = 80,
+                                ImageCropMode = ImageCropMode.Crop
+                            };
+                            item.ThumbnailUrl = _imageUrlGenerator.GetImageUrl(options) ?? string.Empty;
+                        }
+                        catch { /* Non-image files won't generate thumbnails */ }
+                    }
+
                     _logger.LogDebug("Created DuplicateItem: MediaId={MediaId}, FileUrl={FileUrl}, FileType={FileType}, Extension={Extension}", 
                         item.MediaId, item.FileUrl, item.FileType, item.Extension);
 
@@ -522,6 +543,22 @@ public class DuplicateDetectionService : IDuplicateDetectionService
                     IsManuallySelected = fileHash.IsManuallySelectedOriginal,
                     UploaderName = uploaderName
                 });
+
+                // Generate HMAC-signed thumbnail URL for the last added item
+                if (!string.IsNullOrEmpty(fileUrl))
+                {
+                    try
+                    {
+                        var options = new ImageUrlGenerationOptions(fileUrl)
+                        {
+                            Width = 80,
+                            Height = 80,
+                            ImageCropMode = ImageCropMode.Crop
+                        };
+                        items[^1].ThumbnailUrl = _imageUrlGenerator.GetImageUrl(options) ?? string.Empty;
+                    }
+                    catch { /* Non-image files won't generate thumbnails */ }
+                }
             }
 
             return new DuplicateGroup

@@ -3,6 +3,8 @@ using uMediaOps.Repositories;
 using Microsoft.Extensions.Logging;
 using System.Collections.Concurrent;
 using Umbraco.Cms.Core.IO;
+using Umbraco.Cms.Core.Media;
+using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Services;
 
 namespace uMediaOps.Services;
@@ -24,6 +26,7 @@ public class UnusedMediaScanService : IUnusedMediaScanService
     private readonly IReferenceTrackingService _referenceTrackingService;
     private readonly IUnusedMediaScanResultRepository _repository;
     private readonly MediaFileManager _mediaFileManager;
+    private readonly IImageUrlGenerator _imageUrlGenerator;
     private readonly ILogger<UnusedMediaScanService> _logger;
 
     // Track active scans with their progress and cancellation tokens
@@ -35,12 +38,14 @@ public class UnusedMediaScanService : IUnusedMediaScanService
         IReferenceTrackingService referenceTrackingService,
         IUnusedMediaScanResultRepository repository,
         MediaFileManager mediaFileManager,
+        IImageUrlGenerator imageUrlGenerator,
         ILogger<UnusedMediaScanService> logger)
     {
         _mediaService = mediaService;
         _referenceTrackingService = referenceTrackingService;
         _repository = repository;
         _mediaFileManager = mediaFileManager;
+        _imageUrlGenerator = imageUrlGenerator;
         _logger = logger;
     }
 
@@ -320,6 +325,22 @@ public class UnusedMediaScanService : IUnusedMediaScanService
                 item.FileSize = 0;
                 item.HasWarning = true;
                 item.WarningMessage = "No file associated with this media item";
+            }
+
+            // Generate HMAC-signed thumbnail URL for image types
+            if (!string.IsNullOrEmpty(item.FilePath) && media.ContentType.Alias.Contains("image", StringComparison.OrdinalIgnoreCase))
+            {
+                try
+                {
+                    var options = new ImageUrlGenerationOptions(item.FilePath)
+                    {
+                        Width = 80,
+                        Height = 80,
+                        ImageCropMode = ImageCropMode.Crop
+                    };
+                    item.ThumbnailUrl = _imageUrlGenerator.GetImageUrl(options) ?? string.Empty;
+                }
+                catch { /* Non-image files won't generate thumbnails */ }
             }
 
             return item;
