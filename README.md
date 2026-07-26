@@ -4,12 +4,12 @@
 [![NuGet Downloads](https://img.shields.io/nuget/dt/uMediaOps)](https://www.nuget.org/packages/uMediaOps)
 [![Umbraco Marketplace](https://img.shields.io/badge/Umbraco-Marketplace-3544B1?logo=umbraco)](https://marketplace.umbraco.com/package/umediaops)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/ShekharTarare/uMediaOps/blob/main/LICENSE)
-[![Umbraco 17+](https://img.shields.io/badge/Umbraco-17%2B-orange)](https://umbraco.com)
+[![Umbraco 17 | 18](https://img.shields.io/badge/Umbraco-17%20%7C%2018-orange)](https://umbraco.com)
 [![.NET 10](https://img.shields.io/badge/.NET-10.0-purple)](https://dotnet.microsoft.com)
 
 ![uMediaOps Logo](https://raw.githubusercontent.com/ShekharTarare/uMediaOps/main/src/uMediaOps/icon.png)
 
-Comprehensive media management package for Umbraco 17+ that helps you find duplicates, clean up unused media, create backups, and track all operations with audit logging.
+Comprehensive media management package for Umbraco 17 & 18 that helps you find duplicates, clean up unused media, create backups, and track all operations with audit logging.
 
 ## Features
 
@@ -37,6 +37,8 @@ Comprehensive media management package for Umbraco 17+ that helps you find dupli
 ```bash
 dotnet add package uMediaOps
 ```
+
+> **On Umbraco 17?** Use the v1.x branch: `dotnet add package uMediaOps --version 1.0.6`
 
 The package automatically:
 
@@ -74,9 +76,36 @@ Add to your `appsettings.json` (optional — defaults are provided):
 
 ## Requirements
 
-- Umbraco 17.0+
+- Umbraco 18.0+
 - .NET 10.0+
 - SQLite or SQL Server
+
+## Version Compatibility
+
+| uMediaOps Version | Umbraco Version | .NET Version | Branch    | NuGet Package    |
+| ----------------- | --------------- | ------------ | --------- | ---------------- |
+| **2.x**           | Umbraco 18.x    | .NET 10      | `main`    | `uMediaOps` v2.x |
+| **1.x**           | Umbraco 17.x    | .NET 10      | `v17/dev` | `uMediaOps` v1.x |
+
+### Which version should I use?
+
+- **Umbraco 18** → Install `uMediaOps` version 2.x (`dotnet add package uMediaOps`)
+- **Umbraco 17** → Install `uMediaOps` version 1.x (`dotnet add package uMediaOps --version 1.0.6`)
+
+### Upgrading from 1.x to 2.x
+
+If you're upgrading from Umbraco 17 to Umbraco 18:
+
+1. Update your Umbraco packages to 18.x
+2. Update uMediaOps to 2.x: `dotnet add package uMediaOps --version 2.0.0`
+3. Build and run — no code changes or migration steps required
+
+The v2.0 package is API-compatible with v1.x. The only change is the Umbraco version target. All database tables, configuration, and functionality remain the same.
+
+### Branch Strategy
+
+- **`main`** — Active development for Umbraco 18 (v2.x releases)
+- **`v17/dev`** — Maintenance branch for Umbraco 17 (v1.x patch releases)
 
 ## Database Tables
 
